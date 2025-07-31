@@ -5,12 +5,13 @@ import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
+import Dock from "@/components/Dock";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
       <Navigation />
-      <main>
+      <main className="pb-20">
         <Hero />
         <Skills />
         <Education />
@@ -18,6 +19,7 @@ const Index = () => {
         <Awards />
         <Contact />
       </main>
+      <Dock />
     </div>
   );
 };

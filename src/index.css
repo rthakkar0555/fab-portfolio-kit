@@ -115,5 +115,19 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  .dock-item {
+    @apply transition-all duration-300 ease-out hover:scale-125 hover:-translate-y-2;
+  }
+  
+  .dock-container {
+    @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50;
+    @apply bg-background/80 backdrop-blur-lg border border-border/50;
+    @apply rounded-2xl px-4 py-3 shadow-elegant;
   }
 }
