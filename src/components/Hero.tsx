@@ -1,6 +1,40 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
 const Hero = () => {
+  const [currentRole, setCurrentRole] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const roles = [
+    "Computer Science Student",
+    "MERN Stack Developer", 
+    "AI Agent Developer",
+    "Backend Developer"
+  ];
+
+  useEffect(() => {
+    const currentText = roles[currentIndex];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (currentRole.length < currentText.length) {
+          setCurrentRole(currentText.slice(0, currentRole.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (currentRole.length > 0) {
+          setCurrentRole(currentRole.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [currentRole, currentIndex, isDeleting, roles]);
+
   return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(120,119,198,0.3),transparent_50%)]"></div>
@@ -11,8 +45,9 @@ const Hero = () => {
           <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Rishi Thakkar
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            Computer Science Student & Software Developer
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center">
+            {currentRole}
+            <span className="animate-pulse ml-1 text-primary">|</span>
           </p>
           <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
             Dedicated to building scalable applications and optimizing system performance 
