@@ -64,7 +64,7 @@ const Dock = () => {
       });
     }
   };
-  return <div className="dock-container rounded-full bg-gray-300">
+  return <div className="dock-container">
       <div className="flex items-center gap-3">
         {dockItems.map((item, index) => {
         const Icon = item.icon;
