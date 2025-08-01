@@ -64,7 +64,7 @@ const Dock = () => {
       });
     }
   };
-  return <div className="dock-container bg-background/20 backdrop-blur-lg border border-border/30">
+  return <div className="dock-container glass-card">
       <div className="flex items-center gap-3">
         {dockItems.map((item, index) => {
         const Icon = item.icon;
