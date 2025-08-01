@@ -64,7 +64,7 @@ const Dock = () => {
       });
     }
   };
-  return <div className="dock-container bg-background/20 backdrop-blur-lg border border-border/30">
+  return <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/20 before:to-transparent before:pointer-events-none after:content-[''] after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-transparent after:to-white/5 after:pointer-events-none relative overflow-hidden">
       <div className="flex items-center gap-3">
         {dockItems.map((item, index) => {
         const Icon = item.icon;
