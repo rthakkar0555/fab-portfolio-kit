@@ -45,7 +45,7 @@ const Hero = () => {
           <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Rishi Thakkar
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center font-mozilla font-medium">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center font-medium">
             {currentRole}
             <span className="animate-pulse ml-1 text-primary">|</span>
           </p>
