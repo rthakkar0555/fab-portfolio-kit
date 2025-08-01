@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'bitcount': ['Bitcount Prop Single', 'monospace'],
+				'mozilla': ['Mozilla Headline', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
