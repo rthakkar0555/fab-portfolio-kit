@@ -1,22 +1,26 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, Database, Globe, TestTube } from "lucide-react";
+import { Code2, Server, Database, Wrench, Brain } from "lucide-react";
 const Skills = () => {
   const skillCategories = [{
     title: "Programming Languages",
-    icon: <Code className="h-6 w-6" />,
+    icon: <Code2 className="h-6 w-6" />,
     skills: ["JavaScript (Node.js)", "Python", "Java", "C", "C++ (STL)"]
   }, {
     title: "Web Development",
-    icon: <Globe className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js", "MongoDB", "HTML", "CSS", "JavaScript"]
+    icon: <Server className="h-6 w-6" />,
+    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS"]
   }, {
     title: "Databases",
     icon: <Database className="h-6 w-6" />,
     skills: ["MongoDB", "SQL Server Management Studio (SSMS)", "Oracle Database"]
   }, {
+    title: "AI Agent",
+    icon: <Brain className="h-6 w-6" />,
+    skills: ["LangChain", "LangGraph", "Qdrant DB", "OpenAI API SDK", "n8n"]
+  }, {
     title: "Tools & Other",
-    icon: <TestTube className="h-6 w-6" />,
+    icon: <Wrench className="h-6 w-6" />,
     skills: ["Postman (API Testing)", "VS Code", "Git", "GitHub"]
   }];
   return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700">
