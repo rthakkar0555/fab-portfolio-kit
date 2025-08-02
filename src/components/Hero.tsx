@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import DotGrid from "./DotGrid";
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,11 +38,14 @@ const Hero = () => {
 
   return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
-      <div className="dot-grid">
-        <div className="dot-grid__wrap">
-          <div className="dot-grid__canvas"></div>
-        </div>
-      </div>
+      <DotGrid 
+        dotSize={3}
+        gap={40}
+        proximity={100}
+        shockRadius={180}
+        shockStrength={2}
+        returnDuration={1.5}
+      />
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
