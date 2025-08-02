@@ -37,12 +37,11 @@ const Hero = () => {
 
   return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
-      <div className="absolute inset-0 dot-grid">
+      <div className="dot-grid">
         <div className="dot-grid__wrap">
           <div className="dot-grid__canvas"></div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.1),transparent_50%)] bg-slate-50"></div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
