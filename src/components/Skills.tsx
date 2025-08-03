@@ -9,7 +9,7 @@ const Skills = () => {
   }, {
     title: "Web Development",
     icon: <Server className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js","React","Redux Toolkit", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS"]
+    skills: ["Express.js", "Node.js","React","Redux Toolkit", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS", "MongoDB"]
   }, {
     title: "AI Agent",
     icon: <Brain className="h-6 w-6" />,
