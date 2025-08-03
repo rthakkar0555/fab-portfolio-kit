@@ -13,7 +13,7 @@ const Skills = () => {
   }, {
     title: "Databases",
     icon: <Database className="h-6 w-6" />,
-    skills: ["MongoDB", "SQL Server Management Studio (SSMS)", "Oracle Database"]
+    skills: ["MongoDB", "SQL Server Management Studio (SSMS)", "Oracle Database", "Pinecone"]
   }, {
     title: "AI Agent",
     icon: <Brain className="h-6 w-6" />,
