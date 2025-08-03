@@ -13,16 +13,17 @@ const Dock = () => {
     href: "#skills",
     section: "skills"
   }, {
-    name: "Projects",
-    icon: Code,
-    href: "#projects",
-    section: "projects"
-  }, {
     name: "Education",
     icon: Briefcase,
     href: "#education",
     section: "education"
   }, {
+    name: "Projects",
+    icon: Code,
+    href: "#projects",
+    section: "projects"
+  },
+  {
     name: "Awards",
     icon: Award,
     href: "#awards",
