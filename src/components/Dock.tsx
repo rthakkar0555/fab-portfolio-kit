@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, User, Code, Award, Mail, Briefcase } from "lucide-react";
+import { Home, User, Code, Award, Mail, Briefcase,ChevronRight  } from "lucide-react";
 const Dock = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const dockItems = [{
@@ -8,8 +8,8 @@ const Dock = () => {
     href: "#hero",
     section: "hero"
   }, {
-    name: "About",
-    icon: User,
+    name: "skills",
+    icon: ChevronRight ,
     href: "#skills",
     section: "skills"
   }, {
