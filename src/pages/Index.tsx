@@ -6,20 +6,36 @@ import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
 import Dock from "@/components/Dock";
+import DotGrid from "@/components/DotGrid";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <Navigation />
-      <main className="pb-20">
-        <Hero />
-        <Skills />
-        <Education />
-        <Projects />
-        <Awards />
-        <Contact />
-      </main>
-      <Dock />
+      {/* Dotted grid background for entire website */}
+      <DotGrid 
+        dotSize={3}
+        gap={40}
+        proximity={100}
+        shockRadius={180}
+        shockStrength={2}
+        returnDuration={1.5}
+        activeColor="#5227ff"
+        className="fixed inset-0 pointer-events-auto"
+        style={{ zIndex: 0 }}
+      />
+      
+      <div className="relative z-10">
+        <Navigation />
+        <main className="pb-20">
+          <Hero />
+          <Skills />
+          <Education />
+          <Projects />
+          <Awards />
+          <Contact />
+        </main>
+        <Dock />
+      </div>
     </div>
   );
 };
