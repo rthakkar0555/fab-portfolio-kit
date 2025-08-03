@@ -24,7 +24,7 @@ const Skills = () => {
     icon: <Wrench className="h-6 w-6" />,
     skills: ["Postman (API Testing)", "Git", "GitHub"]
   }];
-  return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
+  return (<section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
       <DotGrid 
         dotSize = {5},
         gap = {15},
@@ -68,6 +68,6 @@ const Skills = () => {
             </Card>)}
         </div>
       </div>
-    </section>;
+    </section>);
 };
 export default Skills;
