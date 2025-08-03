@@ -155,12 +155,12 @@ const DotGrid: React.FC<DotGridProps> = ({
       });
     };
 
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('click', handleMouseClick);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('click', handleMouseClick);
 
     return () => {
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('click', handleMouseClick);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('click', handleMouseClick);
     };
   }, [dotSize, gap, baseColor, activeColor, proximity, shockRadius, shockStrength, resistance, returnDuration]);
 
@@ -173,7 +173,7 @@ const DotGrid: React.FC<DotGridProps> = ({
         inset: 0,
         width: '100%',
         height: '100%',
-        pointerEvents: 'auto',
+        pointerEvents: 'none',
         overflow: 'hidden',
         ...style,
       }}

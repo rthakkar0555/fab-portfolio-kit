@@ -20,11 +20,11 @@ const Index = () => {
         shockStrength={2}
         returnDuration={1.5}
         activeColor="#5227ff"
-        className="fixed inset-0 pointer-events-auto"
-        style={{ zIndex: 0 }}
+        className="fixed inset-0"
+        style={{ zIndex: 1 }}
       />
       
-      <div className="relative z-10">
+      <div className="relative" style={{ zIndex: 10 }}>
         <Navigation />
         <main className="pb-20">
           <Hero />
