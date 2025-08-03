@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Server, Database, Wrench, Brain, Monitor } from "lucide-react";
+import DotGrid from "@/components/DotGrid";
 const Skills = () => {
   const skillCategories = [{
     title: "Programming Languages",
@@ -23,8 +24,19 @@ const Skills = () => {
     icon: <Wrench className="h-6 w-6" />,
     skills: ["Postman (API Testing)", "Git", "GitHub"]
   }];
-  return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700">
-      <div className="container mx-auto px-6">
+  return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
+      <DotGrid 
+        dotSize={2}
+        gap={30}
+        proximity={80}
+        shockRadius={150}
+        shockStrength={3}
+        returnDuration={1.2}
+        activeColor="hsl(var(--primary))"
+        baseColor="hsl(var(--primary) / 0.2)"
+        className="absolute inset-0"
+      />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Skills & Technologies

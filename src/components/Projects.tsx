@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Brain, Users, UtensilsCrossed } from "lucide-react";
+import DotGrid from "@/components/DotGrid";
 const Projects = () => {
   const projects = [{
     title: "AI Expense Tracker",
@@ -28,8 +29,19 @@ const Projects = () => {
     icon: <UtensilsCrossed className="h-6 w-6" />,
     link: "#"
   }];
-  return <section id="projects" className="py-20 bg-gradient-card">
-      <div className="container mx-auto px-6">
+  return <section id="projects" className="py-20 bg-gradient-card relative">
+      <DotGrid 
+        dotSize={2}
+        gap={35}
+        proximity={90}
+        shockRadius={160}
+        shockStrength={2.5}
+        returnDuration={1.3}
+        activeColor="hsl(var(--primary))"
+        baseColor="hsl(var(--primary) / 0.15)"
+        className="absolute inset-0"
+      />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             Project Work
