@@ -1,15 +1,19 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Server, Database, Wrench, Brain } from "lucide-react";
+import { Code2, Server, Database, Wrench, Brain, Monitor } from "lucide-react";
 const Skills = () => {
   const skillCategories = [{
     title: "Programming Languages",
     icon: <Code2 className="h-6 w-6" />,
     skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++"]
   }, {
-    title: "Web Development",
+    title: "Frontend Development",
+    icon: <Monitor className="h-6 w-6" />,
+    skills: ["React", "Redux Toolkit", "Shadcn", "Tailwind CSS"]
+  }, {
+    title: "Backend Development", 
     icon: <Server className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js","React","Redux Toolkit", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS", "MongoDB"]
+    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "MongoDB"]
   }, {
     title: "AI Agent",
     icon: <Brain className="h-6 w-6" />,
