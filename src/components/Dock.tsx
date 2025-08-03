@@ -8,7 +8,7 @@ const Dock = () => {
     href: "#hero",
     section: "hero"
   }, {
-    name: "skills",
+    name: "Skills",
     icon: ChevronRight ,
     href: "#skills",
     section: "skills"
