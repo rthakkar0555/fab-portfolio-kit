@@ -26,15 +26,15 @@ const Skills = () => {
   }];
   return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
       <DotGrid 
-        dotSize = 5,
-        gap = 15,
+        dotSize = {5},
+        gap = {15},
         baseColor = 'hsl(var(--primary) / 0.3)',
         activeColor = 'hsl(var(--primary) / 0.8)',
-        proximity = 120,
-        shockRadius = 250,
-        shockStrength = 5,
-        resistance = 750,
-        returnDuration = 1.5,
+        proximity = {120},
+        shockRadius = {250},
+        shockStrength = {5},
+        resistance = {750},
+        returnDuration = {1.5},
         className="absolute inset-0"
       />
       <div className="container mx-auto px-6 relative z-10">
