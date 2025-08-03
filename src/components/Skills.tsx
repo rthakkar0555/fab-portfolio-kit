@@ -5,19 +5,15 @@ const Skills = () => {
   const skillCategories = [{
     title: "Programming Languages",
     icon: <Code2 className="h-6 w-6" />,
-    skills: ["JavaScript (Node.js)", "TypeScript", "Python", "Java", "C", "C++ (STL)"]
+    skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++"]
   }, {
     title: "Web Development",
     icon: <Server className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS"]
-  }, {
-    title: "Databases",
-    icon: <Database className="h-6 w-6" />,
-    skills: ["MongoDB", "SQL Server Management Studio (SSMS)", "Oracle Database", "Pinecone"]
+    skills: ["Express.js", "Node.js","React","Redux Toolkit", "WebSocket", "REST API", "FastAPI", "Shadcn", "Tailwind CSS"]
   }, {
     title: "AI Agent",
     icon: <Brain className="h-6 w-6" />,
-    skills: ["LangChain", "LangGraph", "Qdrant DB", "OpenAI API SDK", "n8n"]
+    skills: ["LangChain", "LangGraph", "Qdrant DB", "OpenAI API SDK", "n8n","Pinecone"]
   }, {
     title: "Tools & Other",
     icon: <Wrench className="h-6 w-6" />,
