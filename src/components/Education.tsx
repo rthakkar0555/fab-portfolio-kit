@@ -7,7 +7,7 @@ const Education = () => {
       institution: "Charotar University of Science and Technology (CHARUSAT)",
       degree: "B.Tech in Computer Science and Engineering",
       period: "2nd Year (2025 - Present)",
-      cgpa: "9.6/10",
+      cgpa: "9.5",
       coursework: "Data Structures and Algorithms, Object-Oriented Programming, Operating Systems, Computer Networks, Database Management Systems, Engineering Mathematics",
       location: "CSPIT"
     },
@@ -15,8 +15,8 @@ const Education = () => {
       institution: "Gujarat Secondary and Higher Secondary Education Board (GSEB)",
       degree: "Higher Secondary Education (HSC) - Science Stream",
       period: "Completed: 2023",
-      cgpa: "99.40 Percentile ACPC RANK:321",
-      coursework: "Physics, Chemistry, Mathematics, Computer Science",
+      cgpa: "99.40 Pr ||  ACPC RANK:321",
+      coursework: "Physics, Chemistry, Mathematics",
       location: ""
     }
   ];
