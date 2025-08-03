@@ -50,7 +50,7 @@ const Education = () => {
                       <h3 className="text-xl font-bold text-foreground">{edu.institution}</h3>
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <Calendar className="h-4 w-4" />
-                        <span className="text-sm">{edu.period}</span>
+                        <span className="text-sm">2023-2027</span>
                       </div>
                     </div>
                     
