@@ -21,7 +21,7 @@ const Skills = () => {
   }, {
     title: "Tools & Other",
     icon: <Wrench className="h-6 w-6" />,
-    skills: ["Postman (API Testing)", "VS Code", "Git", "GitHub"]
+    skills: ["Postman (API Testing)", "Git", "GitHub"]
   }];
   return <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700">
       <div className="container mx-auto px-6">

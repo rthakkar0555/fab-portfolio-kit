@@ -16,15 +16,15 @@ interface DotGridProps {
 }
 
 const DotGrid: React.FC<DotGridProps> = ({
-  dotSize = 4,
-  gap = 32,
+  dotSize = 5,
+  gap = 15,
   baseColor = 'hsl(var(--primary) / 0.3)',
   activeColor = 'hsl(var(--primary) / 0.8)',
   proximity = 120,
-  shockRadius = 200,
-  shockStrength = 3,
-  resistance = 500,
-  returnDuration = 1.2,
+  shockRadius = 250,
+  shockStrength = 5,
+  resistance = 750,
+  returnDuration = 1.5,
   className = '',
   style = {},
 }) => {
