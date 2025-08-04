@@ -65,7 +65,7 @@ const Dock = () => {
       });
     }
   };
-  return <div className="dock-container bg-gray-300/20 backdrop-blur-md px-[10px] py-[10px] rounded-full border border-white/20 shadow-lg">
+  return <div className="dock-container">
       <div className="flex items-center gap-3">
         {dockItems.map((item, index) => {
         const Icon = item.icon;
