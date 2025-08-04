@@ -12,25 +12,7 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const navItems = [{
-    name: "About",
-    href: "#about"
-  }, {
-    name: "Skills",
-    href: "#skills"
-  }, {
-    name: "Education",
-    href: "#education"
-  }, {
-    name: "Projects",
-    href: "#projects"
-  }, {
-    name: "Awards",
-    href: "#awards"
-  }, {
-    name: "Contact",
-    href: "#contact"
-  }];
+  const navItems = [];
   const scrollToSection = (href: string) => {
     setIsOpen(false);
     if (href === "#about") {
