@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Target, Award, BookOpen, Code } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Trophy, Target, Award, BookOpen, Code, ExternalLink } from "lucide-react";
 
 const Awards = () => {
   const achievements = [
@@ -9,9 +10,22 @@ const Awards = () => {
       icon: <Trophy className="h-6 w-6" />,
       items: [
         {
-          title: "Coding Competition Achievements",
-          description: "Winner in one and runner-up in two college-level coding contests",
-          badge: "Multiple Wins"
+          title: "Realy and Blind Coding",
+          description: "College-level coding competition",
+          badge: "Winner",
+          certificateLink: "#"
+        },
+        {
+          title: "OS Arena",
+          description: "Operating Systems competition at college level",
+          badge: "Runner Up",
+          certificateLink: "#"
+        },
+        {
+          title: "PyQuest Hackathon",
+          description: "Python-based hackathon competition at college level",
+          badge: "Runner Up",
+          certificateLink: "#"
         }
       ]
     },
@@ -90,9 +104,20 @@ const Awards = () => {
                           {item.badge}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         {item.description}
                       </p>
+                      {item.certificateLink && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="w-full"
+                          onClick={() => window.open(item.certificateLink, '_blank')}
+                        >
+                          <ExternalLink className="h-3 w-3 mr-1" />
+                          View Certificate
+                        </Button>
+                      )}
                     </div>
                   ))}
                 </div>
