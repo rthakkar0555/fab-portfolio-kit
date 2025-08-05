@@ -101,7 +101,7 @@ const ThemeToggleButton = ({
         <img 
           src={url}
           alt="Theme toggle"
-          className="w-4 h-4 object-cover rounded"
+          className="w-4 h-4 object-cover rounded filter grayscale"
         />
       )
     }
