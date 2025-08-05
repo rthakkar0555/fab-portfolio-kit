@@ -1,4 +1,3 @@
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
@@ -25,10 +24,13 @@ const ThemeToggle = () => {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="w-10 h-10"
+      className="w-10 h-10 p-1"
     >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <img 
+        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTQ2bTd2djN4MTIzM2cwazZheGhwYWs2bHQxNXoyZjA5NHMwODUwcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tHIRLHtNwxpjIFqPdV/giphy.gif"
+        alt="Theme toggle"
+        className="w-full h-full object-cover rounded"
+      />
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
