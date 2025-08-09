@@ -22,7 +22,7 @@ const Experience = () => {
                 <Briefcase className="h-5 w-5 text-foreground" aria-hidden />
               </div>
               <div className="flex-1">
-                <CardTitle className="text-xl">Web Development Intern (MERN Stack)</CardTitle>
+                <CardTitle className="text-xl">Web Development Intern (MERN Stack) — Mamo Technolabs LLP</CardTitle>
                 <CardDescription className="mt-1 flex items-center gap-2">
                   <Calendar className="h-4 w-4" aria-hidden />
                   <span>May 2025 – June 2025</span>
