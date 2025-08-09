@@ -1,6 +1,12 @@
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Server, Database, Wrench, Brain, Monitor } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Code2, Server, Wrench, Brain, Monitor } from "lucide-react";
+import { 
+  SiJavascript, SiTypescript, SiPython, SiOpenjdk, SiC, SiCplusplus,
+  SiReact, SiRedux, SiTailwindcss,
+  SiExpress, SiNodedotjs, SiSocketdotio, SiFastapi, SiMongodb, SiPrisma, SiPostgresql,
+  SiOpenai, SiN8N, SiPostman, SiGit, SiGithub, SiRadixui
+} from "react-icons/si";
 import DotGrid from "@/components/DotGrid";
 const Skills = () => {
   const skillCategories = [{
@@ -14,7 +20,7 @@ const Skills = () => {
   }, {
     title: "Backend Development", 
     icon: <Server className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "MongoDB"]
+    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "MongoDB", "Prisma", "PostgreSQL"]
   }, {
     title: "AI Agent",
     icon: <Brain className="h-6 w-6" />,
@@ -24,6 +30,37 @@ const Skills = () => {
     icon: <Wrench className="h-6 w-6" />,
     skills: ["Postman (API Testing)", "Git", "GitHub"]
   }];
+  
+  const iconMap: Record<string, React.ElementType> = {
+    'JavaScript': SiJavascript,
+    'TypeScript': SiTypescript,
+    'Python': SiPython,
+    'Java': SiOpenjdk,
+    'C': SiC,
+    'C++': SiCplusplus,
+    'React': SiReact,
+    'Redux Toolkit': SiRedux,
+    'Tailwind CSS': SiTailwindcss,
+    'Express.js': SiExpress,
+    'Node.js': SiNodedotjs,
+    'WebSocket': SiSocketdotio,
+    'REST API': Code2,
+    'FastAPI': SiFastapi,
+    'MongoDB': SiMongodb,
+    'PostgreSQL': SiPostgresql,
+    'Prisma': SiPrisma,
+    'LangChain': Code2,
+    'LangGraph': Code2,
+    'Qdrant DB': Code2,
+    'OpenAI API SDK': SiOpenai,
+    'n8n': SiN8N,
+    'Pinecone': Code2,
+    'Postman (API Testing)': SiPostman,
+    'Git': SiGit,
+    'GitHub': SiGithub,
+    'Shadcn': SiRadixui,
+  };
+
   return (
     <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
       <DotGrid 
@@ -48,29 +85,43 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="bg-card/50 backdrop-blur-sm border-primary/10 hover:shadow-elegant transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-xl">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    {category.icon}
+        <TooltipProvider>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {skillCategories.map((category, index) => (
+              <Card key={index} className="bg-card/50 backdrop-blur-sm border-primary/10 hover:shadow-elegant transition-all duration-300">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-xl">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                      {category.icon}
+                    </div>
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-3">
+                    {category.skills.map((skill, skillIndex) => {
+                      const Icon = iconMap[skill] || Code2;
+                      return (
+                        <Tooltip key={skillIndex}>
+                          <TooltipTrigger asChild>
+                            <button
+                              aria-label={skill}
+                              title={skill}
+                              className="p-2 rounded-lg bg-primary/5 text-primary border border-primary/20 hover:bg-primary/10 transition-colors"
+                            >
+                              <Icon size={20} />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>{skill}</TooltipContent>
+                        </Tooltip>
+                      );
+                    })}
                   </div>
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge key={skillIndex} variant="secondary" className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </TooltipProvider>
       </div>
     </section>
   );
