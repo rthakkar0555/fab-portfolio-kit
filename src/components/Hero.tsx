@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, FileText } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -54,9 +54,11 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Button size="lg" className="shadow-glow hover:shadow-elegant transition-all duration-300">
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
+            <Button asChild size="lg" className="shadow-glow hover:shadow-elegant transition-all duration-300">
+              <a href="https://drive.google.com/file/d/1ZlznKmhXW5mTKGUHDgGBxPmpbtGVteoR/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="View Resume PDF">
+                <FileText className="mr-2 h-5 w-5" />
+                Resume
+              </a>
             </Button>
             <Button variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
               View Projects
