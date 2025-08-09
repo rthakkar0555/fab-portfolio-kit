@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, User, Code, Award, Mail, Briefcase,ChevronRight  } from "lucide-react";
+import { Home, Code, Award, Briefcase, GraduationCap, ChevronRight } from "lucide-react";
 const Dock = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const dockItems = [{
@@ -14,7 +14,7 @@ const Dock = () => {
     section: "skills"
   }, {
     name: "Education",
-    icon: Briefcase,
+    icon: GraduationCap,
     href: "#education",
     section: "education"
   }, {
@@ -33,12 +33,8 @@ const Dock = () => {
     icon: Award,
     href: "#awards",
     section: "awards"
-  }, {
-    name: "Contact",
-    icon: Mail,
-    href: "#contact",
-    section: "contact"
-  }];
+  }
+];
   useEffect(() => {
     const handleScroll = () => {
       const sections = dockItems.map(item => item.section);
