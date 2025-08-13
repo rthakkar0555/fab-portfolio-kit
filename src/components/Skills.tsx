@@ -1,69 +1,86 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Code2, Server, Wrench, Brain, Monitor } from "lucide-react";
-import { 
+import {
   SiJavascript, SiTypescript, SiPython, SiOpenjdk, SiC, SiCplusplus,
-  SiReact, SiRedux, SiTailwindcss,
+  SiReact, SiRedux, SiRadixui, SiTailwindcss,
   SiExpress, SiNodedotjs, SiSocketdotio, SiFastapi, SiMongodb, SiPrisma, SiPostgresql,
-  SiOpenai, SiN8N, SiPostman, SiGit, SiGithub, SiRadixui
+  SiOpenai, SiN8N, SiPine64,
+  SiPostman, SiGit, SiGithub
 } from "react-icons/si";
 import DotGrid from "@/components/DotGrid";
+
 const Skills = () => {
-  const skillCategories = [{
-    title: "Programming Languages",
-    icon: <Code2 className="h-6 w-6" />,
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++"]
-  }, {
-    title: "Frontend Development",
-    icon: <Monitor className="h-6 w-6" />,
-    skills: ["React", "Redux Toolkit", "Shadcn", "Tailwind CSS"]
-  }, {
-    title: "Backend Development", 
-    icon: <Server className="h-6 w-6" />,
-    skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "MongoDB", "Prisma", "PostgreSQL"]
-  }, {
-    title: "AI Agent",
-    icon: <Brain className="h-6 w-6" />,
-    skills: ["LangChain", "LangGraph", "Qdrant DB", "OpenAI API SDK", "n8n","Pinecone"]
-  }, {
-    title: "Tools & Other",
-    icon: <Wrench className="h-6 w-6" />,
-    skills: ["Postman (API Testing)", "Git", "GitHub"]
-  }];
-  
+  const skillCategories = [
+    {
+      title: "Programming Languages",
+      icon: <Code2 className="h-6 w-6" />,
+      skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++"]
+    },
+    {
+      title: "Frontend Development",
+      icon: <Monitor className="h-6 w-6" />,
+      skills: ["React", "Redux Toolkit", "Shadcn", "Tailwind CSS"]
+    },
+    {
+      title: "Backend Development",
+      icon: <Server className="h-6 w-6" />,
+      skills: ["Express.js", "Node.js", "WebSocket", "REST API", "FastAPI", "MongoDB", "Prisma", "PostgreSQL"]
+    },
+    {
+      title: "AI Agent",
+      icon: <Brain className="h-6 w-6" />,
+      skills: ["LangChain", "LangGraph", "Qdrant DB", "OpenAI API SDK", "n8n", "Pinecone"]
+    },
+    {
+      title: "Tools & Other",
+      icon: <Wrench className="h-6 w-6" />,
+      skills: ["Postman (API Testing)", "Git", "GitHub"]
+    }
+  ];
+
   const iconMap: Record<string, React.ElementType> = {
-    'JavaScript': SiJavascript,
-    'TypeScript': SiTypescript,
-    'Python': SiPython,
-    'Java': SiOpenjdk,
-    'C': SiC,
-    'C++': SiCplusplus,
-    'React': SiReact,
-    'Redux Toolkit': SiRedux,
-    'Tailwind CSS': SiTailwindcss,
-    'Express.js': SiExpress,
-    'Node.js': SiNodedotjs,
-    'WebSocket': SiSocketdotio,
-    'REST API': Code2,
-    'FastAPI': SiFastapi,
-    'MongoDB': SiMongodb,
-    'PostgreSQL': SiPostgresql,
-    'Prisma': SiPrisma,
-    'LangChain': Code2,
-    'LangGraph': Code2,
-    'Qdrant DB': Code2,
-    'OpenAI API SDK': SiOpenai,
-    'n8n': SiN8N,
-    'Pinecone': Code2,
-    'Postman (API Testing)': SiPostman,
-    'Git': SiGit,
-    'GitHub': SiGithub,
-    'Shadcn': SiRadixui,
+    // Programming
+    "JavaScript": SiJavascript,
+    "TypeScript": SiTypescript,
+    "Python": SiPython,
+    "Java": SiOpenjdk,
+    "C": SiC,
+    "C++": SiCplusplus,
+
+    // Frontend
+    "React": SiReact,
+    "Redux Toolkit": SiRedux,
+    "Shadcn": SiRadixui,
+    "Tailwind CSS": SiTailwindcss,
+
+    // Backend
+    "Express.js": SiExpress,
+    "Node.js": SiNodedotjs,
+    "WebSocket": SiSocketdotio,
+    "REST API": Code2, // No official icon
+    "FastAPI": SiFastapi,
+    "MongoDB": SiMongodb,
+    "Prisma": SiPrisma,
+    "PostgreSQL": SiPostgresql,
+
+    // AI
+    "LangChain": Code2, // No official icon
+    "LangGraph": Code2, // No official icon
+    "Qdrant DB": Code2, // No official icon
+    "OpenAI API SDK": SiOpenai,
+    "n8n": SiN8N,
+    "Pinecone": SiPine64, // Close enough icon for Pinecone
+
+    // Tools
+    "Postman (API Testing)": SiPostman,
+    "Git": SiGit,
+    "GitHub": SiGithub,
   };
 
   return (
     <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
-      <DotGrid 
+      <DotGrid
         dotSize={2}
         gap={30}
         proximity={80}
@@ -107,9 +124,9 @@ const Skills = () => {
                             <button
                               aria-label={skill}
                               title={skill}
-                              className="p-2 rounded-lg bg-primary/5 text-primary border border-primary/20 hover:bg-primary/10 transition-colors"
+                              className="p-3 rounded-lg bg-slate-800 text-white border border-slate-600 hover:border-primary hover:bg-primary/10 hover:scale-110 transition-all duration-200"
                             >
-                              <Icon size={20} />
+                              <Icon size={22} />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent>{skill}</TooltipContent>
@@ -126,4 +143,5 @@ const Skills = () => {
     </section>
   );
 };
+
 export default Skills;
