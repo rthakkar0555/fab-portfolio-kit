@@ -5,7 +5,7 @@ import {
   SiJavascript, SiTypescript, SiPython, SiOpenjdk, SiC, SiCplusplus,
   SiReact, SiRedux, SiRadixui, SiTailwindcss,
   SiExpress, SiNodedotjs, SiSocketdotio, SiFastapi, SiMongodb, SiPrisma, SiPostgresql,
-  SiOpenai, SiN8N, SiPine64,
+  SiOpenai, SiN8N, SiDatabricks,
   SiPostman, SiGit, SiGithub
 } from "react-icons/si";
 import DotGrid from "@/components/DotGrid";
@@ -70,7 +70,7 @@ const Skills = () => {
     "Qdrant DB": Code2, // No official icon
     "OpenAI API SDK": SiOpenai,
     "n8n": SiN8N,
-    "Pinecone": SiPine64, // Close enough icon for Pinecone
+    "Pinecone": SiDatabricks, // Close enough icon for Pinecone
 
     // Tools
     "Postman (API Testing)": SiPostman,
