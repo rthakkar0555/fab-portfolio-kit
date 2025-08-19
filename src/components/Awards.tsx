@@ -146,7 +146,9 @@ const Awards = () => {
         </div>
 
         <div className="max-w-5xl mx-auto space-y-8">
-          {achievements.map((category, categoryIndex) => (
+          {achievements
+            .filter((category) => category.category !== "Problem Solving")
+            .map((category, categoryIndex) => (
             <Card key={categoryIndex} className="bg-gradient-card border-primary/10 hover:shadow-elegant transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">

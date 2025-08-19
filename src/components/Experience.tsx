@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 const Experience = () => {
   return (
     <section id="experience" aria-labelledby="experience-heading" className="container mx-auto px-6 py-16">
-      <header className="mb-8">
+      <header className="mb-8 text-center">
         <h2 id="experience-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
           Experience
         </h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl">
+        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
           Strong foundation in competitive programming and practical AI agent orchestration using modern tools.
         </p>
       </header>

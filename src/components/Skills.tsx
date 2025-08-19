@@ -78,6 +78,46 @@ const Skills = () => {
     "GitHub": SiGithub,
   };
 
+  // Brand colors for each skill to render colorful badges
+  const colorMap: Record<string, string> = {
+    // Programming
+    "JavaScript": "#F7DF1E",
+    "TypeScript": "#3178C6",
+    "Python": "#3776AB",
+    "Java": "#F89820",
+    "C": "#A8B9CC",
+    "C++": "#00599C",
+
+    // Frontend
+    "React": "#61DAFB",
+    "Redux Toolkit": "#764ABC",
+    "Shadcn": "#A855F7",
+    "Tailwind CSS": "#06B6D4",
+
+    // Backend
+    "Express.js": "#000000",
+    "Node.js": "#339933",
+    "WebSocket": "#6B7280",
+    "REST API": "#6B7280",
+    "FastAPI": "#009688",
+    "MongoDB": "#47A248",
+    "Prisma": "#2D3748",
+    "PostgreSQL": "#4169E1",
+
+    // AI
+    "LangChain": "#2BFF88",
+    "LangGraph": "#F59E0B",
+    "Qdrant DB": "#8A2BE2",
+    "OpenAI API SDK": "#10A37F",
+    "n8n": "#F05A4F",
+    "Pinecone": "#7C3AED",
+
+    // Tools
+    "Postman (API Testing)": "#FF6C37",
+    "Git": "#F05032",
+    "GitHub": "#181717",
+  };
+
   return (
     <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
       <DotGrid
@@ -118,19 +158,19 @@ const Skills = () => {
                   <div className="flex flex-wrap gap-3">
                     {category.skills.map((skill, skillIndex) => {
                       const Icon = iconMap[skill] || Code2;
+                      const color = colorMap[skill] || "#60A5FA"; // fallback
                       return (
-                        <Tooltip key={skillIndex}>
-                          <TooltipTrigger asChild>
-                            <button
-                              aria-label={skill}
-                              title={skill}
-                              className="p-3 rounded-lg bg-slate-800 text-white border border-slate-600 hover:border-primary hover:bg-primary/10 hover:scale-110 transition-all duration-200"
-                            >
-                              <Icon size={22} />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent>{skill}</TooltipContent>
-                        </Tooltip>
+                        <div
+                          key={skillIndex}
+                          className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm bg-white text-black border-slate-200 hover:border-primary hover:bg-white transition-all duration-200 shadow-sm"
+                          aria-label={skill}
+                          title={skill}
+                        >
+                          <span className="grid place-items-center rounded-md w-[22px] h-[22px] bg-transparent">
+                            <Icon size={14} color={color} />
+                          </span>
+                          <span>{skill}</span>
+                        </div>
                       );
                     })}
                   </div>
