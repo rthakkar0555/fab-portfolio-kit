@@ -6,6 +6,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
+import SectionDivider from "@/components/SectionDivider";
 import Dock from "@/components/Dock";
 import DotGrid from "@/components/DotGrid";
 
@@ -29,11 +30,17 @@ const Index = () => {
         <Navigation />
         <main className="pb-20">
           <Hero />
+          <SectionDivider className="my-6 opacity-60" />
           <Skills />
+          <SectionDivider className="my-6 opacity-60" />
           <Education />
+          <SectionDivider className="my-6 opacity-60" />
           <Experience />
+          <SectionDivider className="my-6 opacity-60" />
           <Projects />
+          <SectionDivider className="my-6 opacity-60" />
           <Awards />
+          <SectionDivider className="my-6 opacity-60" />
           <Contact />
         </main>
         <Dock />

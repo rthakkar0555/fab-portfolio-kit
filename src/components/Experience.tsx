@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 
 const Experience = () => {
   return (
-    <section id="experience" aria-labelledby="experience-heading" className="container mx-auto px-6 py-16">
+    <section id="experience" aria-labelledby="experience-heading" className="py-16 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
+      <div className="container mx-auto px-6 relative z-10">
       <header className="mb-8 text-center">
         <h2 id="experience-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
           Experience
@@ -54,6 +56,7 @@ const Experience = () => {
           </CardContent>
         </Card>
       </article>
+      </div>
     </section>
   );
 };

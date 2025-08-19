@@ -8,7 +8,7 @@ import {
   SiOpenai, SiN8N, SiDatabricks,
   SiPostman, SiGit, SiGithub
 } from "react-icons/si";
-import DotGrid from "@/components/DotGrid";
+ 
 
 const Skills = () => {
   const skillCategories = [
@@ -119,18 +119,8 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-gradient-card rounded-none bg-slate-700 relative">
-      <DotGrid
-        dotSize={2}
-        gap={30}
-        proximity={80}
-        shockRadius={150}
-        shockStrength={3}
-        returnDuration={1.2}
-        activeColor="hsl(var(--primary))"
-        baseColor="hsl(var(--primary) / 0.2)"
-        className="absolute inset-0"
-      />
+    <section id="skills" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
