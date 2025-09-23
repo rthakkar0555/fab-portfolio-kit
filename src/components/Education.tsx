@@ -15,9 +15,9 @@ const Education = () => {
       institution: "Gujarat Secondary and Higher Secondary Education Board (GSEB)",
       degree: "Higher Secondary Education (HSC) - Science Stream",
       period: "Completed: 2023",
-      cgpa: "99.40 Pr ||  ACPC RANK:321",
+      marks: true, // Flag to indicate this entry has special marks display
       coursework: "Physics, Chemistry, Mathematics",
-      location: ""
+      location: "GSEB"
     }
   ];
 
@@ -63,7 +63,18 @@ const Education = () => {
                     
                     <div className="flex items-center gap-2 mb-4">
                       <Award className="h-4 w-4 text-primary" />
-                      <span className="text-primary font-semibold">CGPA: {edu.cgpa}</span>
+                      {edu.cgpa ? (
+                        <span className="text-primary font-semibold">CGPA: <span className="bg-yellow-50 text-black px-1 rounded font-medium">{edu.cgpa}</span></span>
+                      ) : edu.marks ? (
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary font-semibold">Percentile Rank: <span className="bg-yellow-50 text-black px-1 rounded font-medium">99.40</span></span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-primary font-semibold">ACPC Rank: <span className="bg-yellow-50 text-black px-1 rounded font-medium">321</span></span>
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                     
                     <div>
