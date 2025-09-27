@@ -41,9 +41,23 @@ const Education = () => {
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
                   <div className="flex-shrink-0">
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit">
-                      <GraduationCap className="h-8 w-8" />
-                    </div>
+                    {edu.location === "CSPIT" ? (
+                      <img 
+                        src="/img/cspit.png" 
+                        alt="CSPIT college logo" 
+                        className="h-12 w-12 object-contain rounded-lg"
+                      />
+                    ) : edu.location === "GSEB" ? (
+                      <img 
+                        src="/img/gseb.png" 
+                        alt="GSEB logo" 
+                        className="h-12 w-12 object-contain rounded-lg"
+                      />
+                    ) : (
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit">
+                        <GraduationCap className="h-8 w-8" />
+                      </div>
+                    )}
                   </div>
                   
                   <div className="flex-grow">

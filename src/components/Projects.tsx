@@ -125,10 +125,12 @@ const ProjectModal = ({ project }: { project: any }) => {
               <Github className="mr-2 h-4 w-4" />
               View Code
             </Button>
-            <Button className="flex-1">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Live Demo
-            </Button>
+            {project.liveLink && (
+              <Button className="flex-1" onClick={() => window.open(project.liveLink, '_blank')}>
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Live Demo
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -216,10 +218,12 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
                 <Github className="mr-2 h-4 w-4" />
                 Code
               </Button>
-              <Button size="sm" variant="outline" className="flex-1 border-primary/20 hover:bg-primary/5">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Demo
-              </Button>
+              {project.liveLink && (
+                <Button size="sm" variant="outline" className="flex-1 border-primary/20 hover:bg-primary/5" onClick={() => window.open(project.liveLink, '_blank')}>
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Demo
+                </Button>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -241,6 +245,7 @@ const Projects = () => {
     summary: "Smart expense tracking with AI automation",
     icon: <Brain className="h-6 w-6" />,
     link: "#",
+    liveLink: "https://example.com/ai-expense-tracker", // Add your live demo link here
     video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" // Sample video - replace with your actual video
   }, {
     title: "Group Study Platform",
@@ -253,6 +258,7 @@ const Projects = () => {
     summary: "Collaborative study platform with real-time features",
     icon: <Users className="h-6 w-6" />,
     link: "#",
+    liveLink: null, // No live demo available for this project
     video: null // Add your video URL here when available
   }, {
     title: "Food Ordering System",
@@ -265,6 +271,7 @@ const Projects = () => {
     summary: "Full-stack food delivery with admin panel",
     icon: <UtensilsCrossed className="h-6 w-6" />,
     link: "#",
+    liveLink: "https://example.com/food-ordering", // Add your live demo link here
     video: null // Add your video URL here when available
   }];
   return <section id="projects" className="py-20 relative overflow-hidden">

@@ -21,11 +21,15 @@ const Experience = () => {
             <Card>
               <CardHeader className="gap-2">
                 <div className="flex items-start gap-3">
-                  <div className="shrink-0 rounded-md bg-muted p-2">
-                    <Briefcase className="h-5 w-5 text-foreground" aria-hidden />
-                  </div>
                   <div className="flex-1">
-                    <CardTitle className="text-xl">Web Development Intern (MERN Stack) — Mamo Technolabs LLP</CardTitle>
+                    <CardTitle className="text-xl flex items-center gap-3">
+                      <img 
+                        src="/img/mamo.png" 
+                        alt="Mamo Technolabs LLP logo" 
+                        className="h-8 w-8 object-contain"
+                      />
+                      Web Development Intern (MERN Stack) — Mamo Technolabs LLP
+                    </CardTitle>
                     <CardDescription className="mt-1 flex items-center gap-2">
                       <Calendar className="h-4 w-4" aria-hidden />
                       <span>May 2025 – June 2025</span>
