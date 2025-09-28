@@ -2,8 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ExternalLink, Github, Brain, Users, UtensilsCrossed, X, Play, Pause } from "lucide-react";
-import { useState, useRef } from "react";
+import { ExternalLink, Github, Brain, Users, UtensilsCrossed, X, Play, Pause, Trophy } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
  
 // Project Modal Component
 const ProjectModal = ({ project }: { project: any }) => {
@@ -233,6 +233,96 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
   );
 };
  
+// Competitive Programming Section Component
+const CompetitiveProgrammingSection = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFlipped(prev => !prev);
+    }, 3000); // Flip every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="col-span-full mb-12">
+      <div className="text-center mb-8">
+        <h3 className="text-2xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+          Competitive Programming Profile
+        </h3>
+        <p className="text-muted-foreground">
+          Explore my competitive programming journey across various platforms
+        </p>
+      </div>
+      
+      <div className="flex justify-center">
+        <div 
+          className="relative w-[28rem] h-96 perspective-1000 cursor-pointer"
+          onClick={() => window.open('https://codolio.com/profile/rthakkar', '_blank')}
+        >
+          <div 
+            className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+              isFlipped ? 'rotate-y-180' : ''
+            }`}
+          >
+            {/* Front of card - Profile image */}
+            <div className="absolute inset-0 backface-hidden">
+              <img 
+                src="/img/profileCard.png" 
+                alt="Competitive Programming Profile"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            
+            {/* Back of card - Codolio button */}
+            <div className="absolute inset-0 backface-hidden rotate-y-180">
+              <Card className="w-full h-full bg-gradient-hero/10 border-primary/20 flex items-center justify-center">
+                <CardContent className="p-8 text-center">
+                  <div className="mb-6">
+                    <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold mb-2">View My CP Profile</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Check out my competitive programming achievements on Codolio
+                    </p>
+                  </div>
+                  
+                  <Button 
+                    size="lg" 
+                    className="shadow-glow hover:shadow-elegant transition-all duration-300"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open('https://codolio.com/profile/rthakkar', '_blank');
+                    }}
+                  >
+                    <ExternalLink className="mr-2 h-5 w-5" />
+                    View on Codolio
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <style jsx>{`
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .transform-style-preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const Projects = () => {
   const projects = [{
     title: "AI Expense Tracker",
@@ -279,11 +369,11 @@ const Projects = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-            Project Work
+            Projects & CP
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Hands-on experience building scalable applications with modern technologies, 
-            from AI-powered tools to full-stack web platforms.
+            from AI-powered tools to full-stack web platforms, plus my competitive programming journey.
           </p>
         </div>
 
@@ -291,6 +381,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
+          <CompetitiveProgrammingSection />
         </div>
       </div>
     </section>;
