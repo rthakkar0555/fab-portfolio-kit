@@ -277,7 +277,7 @@ const CompetitiveProgrammingSection = () => {
             
             {/* Back of card - Codolio button */}
             <div className="absolute inset-0 backface-hidden rotate-y-180">
-              <Card className="w-full h-full bg-gradient-hero/10 border-primary/20 flex items-center justify-center">
+              <Card className="w-full h-full bg-gradient-hero/10 border-0 flex items-center justify-center">
                 <CardContent className="p-8 text-center">
                   <div className="mb-6">
                     <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
@@ -305,7 +305,7 @@ const CompetitiveProgrammingSection = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .perspective-1000 {
           perspective: 1000px;
         }
