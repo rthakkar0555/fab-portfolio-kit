@@ -44,7 +44,7 @@ const Experience = () => {
                   <li>Collaborated in an agile environment and practiced Git-based team workflows.</li>
                 </ul>
 
-                <div className="mt-6">
+                <div className="mt-6 flex flex-wrap gap-3 justify-center">
                   <Button asChild variant="secondary">
                     <a
                       href="https://www.linkedin.com/feed/update/urn:li:activity:7344372394192437249/"
@@ -55,6 +55,18 @@ const Experience = () => {
                     >
                       <LinkIcon className="h-4 w-4" aria-hidden />
                       View Certificate on LinkedIn
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <a
+                      href="https://internship-project-5ttc.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View live internship project"
+                      className="inline-flex items-center gap-2"
+                    >
+                      <LinkIcon className="h-4 w-4" aria-hidden />
+                      View Live Project
                     </a>
                   </Button>
                 </div>
