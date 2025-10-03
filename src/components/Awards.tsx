@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,20 +15,37 @@ const PhotoCarousel = ({ photos, currentIndex, onIndexChange }: { photos: string
     onIndexChange((currentIndex - 1 + photos.length) % photos.length);
   };
 
+  // Auto-slideshow functionality with dynamic timing
+  React.useEffect(() => {
+    if (photos.length <= 1) return;
+    
+    const getPhotoDuration = (index: number) => {
+      if (index === 0) return 4000; // First photo: 4 seconds (40% of 10s cycle)
+      return 2000; // Other photos: 2 seconds each (60% of 10s cycle)
+    };
+    
+    const duration = getPhotoDuration(currentIndex);
+    const interval = setInterval(() => {
+      nextPhoto();
+    }, duration);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, photos.length]);
+
   return (
     <div className="relative">
-      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+      <div className="relative aspect-video bg-white rounded-lg overflow-hidden">
         <img
           src={photos[currentIndex]}
           alt={`Hackathon photo ${currentIndex + 1}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
         
         {/* Navigation arrows */}
         <Button
           variant="outline"
           size="sm"
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-white/20"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 border-gray-300 shadow-lg"
           onClick={prevPhoto}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -36,7 +53,7 @@ const PhotoCarousel = ({ photos, currentIndex, onIndexChange }: { photos: string
         <Button
           variant="outline"
           size="sm"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-white/20"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 border-gray-300 shadow-lg"
           onClick={nextPhoto}
         >
           <ChevronRight className="h-4 w-4" />
@@ -149,6 +166,20 @@ const HackathonModal = ({ hackathon }: { hackathon: any }) => {
               ))}
             </div>
           </div>
+
+          {/* LinkedIn Post Button */}
+          {hackathon.linkedinPost && (
+            <div>
+              <Button 
+                variant="outline" 
+                className="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200"
+                onClick={() => window.open(hackathon.linkedinPost, '_blank')}
+              >
+                <ExternalLink className="h-4 w-4 mr-2" />
+                View Detailed LinkedIn Post
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </DialogContent>
@@ -218,6 +249,7 @@ const Awards = () => {
           description: "AI-powered RAG system for appliance manuals with QR code integration",
           badge: "2nd Place",
           certificateLink: "#",
+          linkedinPost: "https://www.linkedin.com/feed/update/urn:li:activity:7376653682144174081/",
           // Hackathon specific data
           date: "2024",
           location: "CHARUSAT UNIVERSITY",
@@ -225,9 +257,10 @@ const Awards = () => {
           achievement: "2nd Place - DataQuest Hackathon",
           longDescription: "Built Companion AI - a smart RAG system for appliances that makes retrieving information fast, unified, and super easy. The system combines multiple appliance manuals in a single collection, provides semantic search capabilities, and includes both admin and user panels. Users can scan QR codes on appliances to instantly access relevant information in under 30 seconds. The solution features React Native mobile app, React + Next.js web app, and a sophisticated backend with LangChain, FastAPI, and NVIDIA NIM integration.",
           photos: [
-            "/placeholder.svg", // Replace with your actual hackathon photos
-            "/placeholder.svg",
-            "/placeholder.svg"
+            "/img/hackthon/dataquest/1.png",
+            "/img/hackthon/dataquest/2.png",
+            "/img/hackthon/dataquest/3.png",
+            "/img/hackthon/dataquest/4.png"
           ],
           teamMembers: [
             { name: "Your Name", role: "Lead Developer" },
@@ -353,8 +386,28 @@ const Awards = () => {
     }
   ];
 
-  // Hackathon Card Component
-  const HackathonCard = ({ hackathon }: { hackathon: any }) => (
+  // Hackathon Card with Auto-slideshow Component
+  const HackathonCardWithSlideshow = ({ hackathon }: { hackathon: any }) => {
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+    // Auto-slideshow functionality for card with dynamic timing
+    useEffect(() => {
+      if (!hackathon.photos || hackathon.photos.length <= 1) return;
+      
+      const getPhotoDuration = (index: number) => {
+        if (index === 0) return 5000; // First photo: 5 seconds (40% of ~12s cycle)
+        return 2000; // Other photos: 2 seconds each (60% of ~12s cycle)
+      };
+      
+      const duration = getPhotoDuration(currentPhotoIndex);
+      const interval = setInterval(() => {
+        setCurrentPhotoIndex((prev) => (prev + 1) % hackathon.photos.length);
+      }, duration);
+
+      return () => clearInterval(interval);
+    }, [currentPhotoIndex, hackathon.photos]);
+
+    return (
     <Dialog>
       <DialogTrigger asChild>
         <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:shadow-elegant transition-all duration-300 group cursor-pointer">
@@ -362,9 +415,9 @@ const Awards = () => {
           <div className="relative aspect-video bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
             {hackathon.photos && hackathon.photos.length > 0 ? (
               <img
-                src={hackathon.photos[0]}
+                src={hackathon.photos[currentPhotoIndex]}
                 alt={hackathon.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-contain bg-white transition-all duration-500 ease-in-out group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
@@ -376,13 +429,6 @@ const Awards = () => {
                 </div>
               </div>
             )}
-            
-            {/* Play indicator */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30">
-                <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1" />
-              </div>
-            </div>
           </div>
 
           {/* Content Section */}
@@ -425,12 +471,29 @@ const Awards = () => {
                 🏆 {hackathon.achievement}
               </p>
             </div>
+            
+            {/* LinkedIn Post Button */}
+            {hackathon.linkedinPost && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full mt-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(hackathon.linkedinPost, '_blank');
+                }}
+              >
+                <ExternalLink className="h-3 w-3 mr-2" />
+                View LinkedIn Post
+              </Button>
+            )}
           </CardContent>
         </Card>
       </DialogTrigger>
       <HackathonModal hackathon={hackathon} />
     </Dialog>
-  );
+    );
+  };
 
   return (
     <section id="awards" className="py-20 relative overflow-hidden">
@@ -469,7 +532,7 @@ const Awards = () => {
                   {/* Hackathon Cards - 3 Column Layout for Laptop */}
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                     {category.items.map((item, itemIndex) => (
-                      <HackathonCard key={itemIndex} hackathon={item} />
+                      <HackathonCardWithSlideshow key={itemIndex} hackathon={item} />
                     ))}
                   </div>
                 </div>
