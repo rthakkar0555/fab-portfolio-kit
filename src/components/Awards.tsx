@@ -268,22 +268,24 @@ const Awards = () => {
           ],
           technologies: ["LangChain", "FastAPI", "React", "Next.js", "React Native", "NVIDIA NIM", "Qdrant", "Python"]
         },
-        {
-          title: "Hackwave 2.0 - Echelon Dev Society",
-          description: "Multi-Agent System for Problem Statement Refinement using AI agents",
-          badge: "Top 50 Finalist",
-          certificateLink: "https://lnkd.in/d8iunBn9",
+         {
+           title: "Hackwave 2.0 - Echelon Dev Society",
+           description: "Multi-Agent System for Problem Statement Refinement using AI agents",
+           badge: "Top 50 Finalist",
+           certificateLink: "https://lnkd.in/d8iunBn9",
+           linkedinPost: "https://www.linkedin.com/feed/update/urn:li:activity:7369421819893805058/",
           // Hackathon specific data
           date: "2024",
           location: "CDGI, Indore",
           teamSize: 3,
           achievement: "Top 50 out of 900+ teams - National Level Hackathon",
-          longDescription: "Thrilled to share that our team X-Force made it to the Top 50 out of 900+ teams in Hackwave 2.0, a national-level hackathon organized by Echelon Dev Society, CDGI. In the first round (online submission via Unstop), we presented our idea and competed against hundreds of amazing teams across India. From there, we were selected as finalists and got the opportunity to participate in the 36-hour offline hackathon hosted at CDGI, Indore. During the finale, we built a Multi-Agent System for Problem Statement Refinement from scratch — designed to classify, analyze, and collaboratively improve problem statements using specialized AI agents. The system features agents for domain expertise, UI/UX, technical architecture, revenue models, debates, and moderation, with a supervisor agent to coordinate and refine the outputs. The workflow is designed for collaborative refinement and decision-making.",
-          photos: [
-            "/placeholder.svg", // Replace with your actual hackathon photos
-            "/placeholder.svg",
-            "/placeholder.svg"
-          ],
+           longDescription: "Thrilled to share that our team X-Force made it to the Top 50 out of 900+ teams in Hackwave 2.0, a national-level hackathon organized by Echelon Dev Society, CDGI. In the first round (online submission via Unstop), we presented our idea and competed against hundreds of amazing teams across India. From there, we were selected as finalists and got the opportunity to participate in the 36-hour offline hackathon hosted at CDGI, Indore. During the finale, we built a Multi-Agent System for Problem Statement Refinement from scratch — designed to classify, analyze, and collaboratively improve problem statements using specialized AI agents. The system features agents for domain expertise, UI/UX, technical architecture, revenue models, debates, and moderation, with a supervisor agent to coordinate and refine the outputs. The workflow is designed for collaborative refinement and decision-making.",
+           photos: [
+             "/img/hackthon/hackwave/1.png",
+             "/img/hackthon/hackwave/2.png",
+             "/img/hackthon/hackwave/3.png",
+             "/img/hackthon/hackwave/4.png"
+           ],
           teamMembers: [
             { name: "Rishi Thakkar", role: "Lead Developer & System Architect" },
             { name: "Prit Patel", role: "AI Agent Specialist" },
@@ -295,7 +297,8 @@ const Awards = () => {
           title: "PyQuest Hackathon",
           description: "Python-based hackathon competition at college level",
           badge: "Runner Up",
-          certificateLink: "#",
+          certificateLink: "https://www.linkedin.com/feed/update/urn:li:activity:7305615936571506688/",
+          linkedinPost: "https://www.linkedin.com/feed/update/urn:li:activity:7305615936571506688/",
           // Hackathon specific data
           date: "March 2024",
           location: "College Campus",
@@ -303,9 +306,8 @@ const Awards = () => {
           achievement: "Runner Up - Python Hackathon",
           longDescription: "Developed an innovative Python-based solution that addressed real-world challenges. Our team worked collaboratively to create a comprehensive application that demonstrated advanced programming skills and creative problem-solving abilities.",
           photos: [
-            "/placeholder.svg", // Replace with your actual hackathon photos
-            "/placeholder.svg",
-            "/placeholder.svg"
+            "/img/hackthon/pyquest/1.png",
+            "/img/hackthon/pyquest/2.png"
           ],
           teamMembers: [
             { name: "Your Name", role: "Lead Developer" },
@@ -386,13 +388,15 @@ const Awards = () => {
     }
   ];
 
-  // Hackathon Card with Auto-slideshow Component
-  const HackathonCardWithSlideshow = ({ hackathon }: { hackathon: any }) => {
+  // Hackathon Card with Hover-based Slideshow Component
+  const HackathonCardWithSlideshow = ({ hackathon, isFirstCard = false }: { hackathon: any, isFirstCard?: boolean }) => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
 
-    // Auto-slideshow functionality for card with dynamic timing
+    // Auto-slideshow functionality - only for first card or when hovered
     useEffect(() => {
       if (!hackathon.photos || hackathon.photos.length <= 1) return;
+      if (!isFirstCard && !isHovered) return; // Only slide if it's the first card or being hovered
       
       const getPhotoDuration = (index: number) => {
         if (index === 0) return 5000; // First photo: 5 seconds (40% of ~12s cycle)
@@ -405,31 +409,35 @@ const Awards = () => {
       }, duration);
 
       return () => clearInterval(interval);
-    }, [currentPhotoIndex, hackathon.photos]);
+    }, [currentPhotoIndex, hackathon.photos, isFirstCard, isHovered]);
 
     return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="bg-card/50 backdrop-blur-sm border-primary/10 hover:shadow-elegant transition-all duration-300 group cursor-pointer">
-          {/* Photo Section */}
-          <div className="relative aspect-video bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
-            {hackathon.photos && hackathon.photos.length > 0 ? (
-              <img
-                src={hackathon.photos[currentPhotoIndex]}
-                alt={hackathon.title}
-                className="w-full h-full object-contain bg-white transition-all duration-500 ease-in-out group-hover:scale-105"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
-                <div className="text-center">
-                  <div className="p-4 rounded-full bg-primary/20 text-primary mb-4 mx-auto w-fit">
-                    <Zap className="h-6 w-6" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">Hackathon photos coming soon</p>
-                </div>
-              </div>
-            )}
-          </div>
+         <Card 
+           className="relative bg-card/50 backdrop-blur-sm border-primary/10 hover:shadow-elegant transition-all duration-300 group cursor-pointer"
+           onMouseEnter={() => setIsHovered(true)}
+           onMouseLeave={() => setIsHovered(false)}
+         >
+           {/* Photo Section */}
+           <div className="relative aspect-video bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
+             {hackathon.photos && hackathon.photos.length > 0 ? (
+               <img
+                 src={hackathon.photos[currentPhotoIndex]}
+                 alt={hackathon.title}
+                 className="w-full h-full object-contain bg-white transition-all duration-500 ease-in-out group-hover:scale-105"
+               />
+             ) : (
+               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
+                 <div className="text-center">
+                   <div className="p-4 rounded-full bg-primary/20 text-primary mb-4 mx-auto w-fit">
+                     <Zap className="h-6 w-6" />
+                   </div>
+                   <p className="text-sm text-muted-foreground">Hackathon photos coming soon</p>
+                 </div>
+               </div>
+             )}
+           </div>
 
           {/* Content Section */}
           <CardContent className="p-6 space-y-4">
@@ -472,23 +480,34 @@ const Awards = () => {
               </p>
             </div>
             
-            {/* LinkedIn Post Button */}
-            {hackathon.linkedinPost && (
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="w-full mt-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  window.open(hackathon.linkedinPost, '_blank');
-                }}
-              >
-                <ExternalLink className="h-3 w-3 mr-2" />
-                View LinkedIn Post
-              </Button>
-            )}
-          </CardContent>
-        </Card>
+             {/* LinkedIn Post Button */}
+             {hackathon.linkedinPost && (
+               <Button 
+                 variant="outline" 
+                 size="sm" 
+                 className="w-full mt-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200 relative z-20"
+                 onClick={(e) => {
+                   e.stopPropagation();
+                   window.open(hackathon.linkedinPost, '_blank');
+                 }}
+               >
+                 <ExternalLink className="h-3 w-3 mr-2" />
+                 View LinkedIn Post
+               </Button>
+             )}
+           </CardContent>
+           
+           {/* Full Card Hover Overlay */}
+           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg z-10">
+             <div className="text-center text-white">
+               <div className="p-3 rounded-full bg-white/20 backdrop-blur-sm mb-3 mx-auto w-fit">
+                 <Zap className="h-6 w-6" />
+               </div>
+               <p className="text-lg font-semibold mb-1">Click to see details</p>
+               <p className="text-sm text-white/80">View project info, team & tech stack</p>
+             </div>
+           </div>
+         </Card>
       </DialogTrigger>
       <HackathonModal hackathon={hackathon} />
     </Dialog>
@@ -530,11 +549,15 @@ const Awards = () => {
                   </div>
                   
                   {/* Hackathon Cards - 3 Column Layout for Laptop */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {category.items.map((item, itemIndex) => (
-                      <HackathonCardWithSlideshow key={itemIndex} hackathon={item} />
-                    ))}
-                  </div>
+                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                     {category.items.map((item, itemIndex) => (
+                       <HackathonCardWithSlideshow 
+                         key={itemIndex} 
+                         hackathon={item} 
+                         isFirstCard={itemIndex === 0}
+                       />
+                     ))}
+                   </div>
                 </div>
               ) : (
                 // Regular layout for other categories
