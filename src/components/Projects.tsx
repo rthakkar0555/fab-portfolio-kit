@@ -233,18 +233,8 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
   );
 };
  
-// Competitive Programming Section Component
+// Competitive Programming Section Component (side-by-side, non-flipping)
 const CompetitiveProgrammingSection = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFlipped(prev => !prev);
-    }, 3000); // Flip every 3 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="col-span-full mb-12">
       <div className="text-center mb-8">
@@ -255,70 +245,41 @@ const CompetitiveProgrammingSection = () => {
           Explore my competitive programming journey across various platforms
         </p>
       </div>
-      
-      <div className="flex justify-center">
-        <div 
-          className="relative w-[28rem] h-96 perspective-1000 cursor-pointer"
-          onClick={() => window.open('https://codolio.com/profile/rthakkar', '_blank')}
-        >
-          <div 
-            className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
-              isFlipped ? 'rotate-y-180' : ''
-            }`}
-          >
-            {/* Front of card - Profile image */}
-            <div className="absolute inset-0 backface-hidden">
-              <img 
-                src="/img/profileCard.png" 
-                alt="Competitive Programming Profile"
-                className="w-full h-full object-contain"
-              />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          {/* Left: Static profile image */}
+          <div className="relative flex items-center justify-center">
+            <img 
+              src="/img/profileCard.png" 
+              alt="Competitive Programming Profile"
+              className="w-full h-full max-h-96 object-contain rounded-md"
+            />
+          </div>
+
+          {/* Right: Details and action */}
+          <div className="flex flex-col justify-center">
+            <div className="mb-6">
+              <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-4">
+                <Trophy className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">View My CP Profile</h3>
+              <p className="text-muted-foreground">
+                Check out my competitive programming achievements on Codolio.
+              </p>
             </div>
-            
-            {/* Back of card - Codolio button */}
-            <div className="absolute inset-0 backface-hidden rotate-y-180">
-              <Card className="w-full h-full bg-gradient-hero/10 border-0 flex items-center justify-center">
-                <CardContent className="p-8 text-center">
-                  <div className="mb-6">
-                    <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">View My CP Profile</h3>
-                    <p className="text-muted-foreground mb-6">
-                      Check out my competitive programming achievements on Codolio
-                    </p>
-                  </div>
-                  
-                  <Button 
-                    size="lg" 
-                    className="shadow-glow hover:shadow-elegant transition-all duration-300"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open('https://codolio.com/profile/rthakkar', '_blank');
-                    }}
-                  >
-                    <ExternalLink className="mr-2 h-5 w-5" />
-                    View on Codolio
-                  </Button>
-                </CardContent>
-              </Card>
+
+            <div>
+              <Button 
+                size="lg" 
+                className="shadow-glow hover:shadow-elegant transition-all duration-300"
+                onClick={() => window.open('https://codolio.com/profile/rthakkar', '_blank')}
+              >
+                <ExternalLink className="mr-2 h-5 w-5" />
+                View on Codolio
+              </Button>
             </div>
           </div>
-        </div>
       </div>
-      
-      <style>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .transform-style-preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Trophy, Target, Award, BookOpen, Code, ExternalLink, RefreshCw, Zap, ChevronLeft, ChevronRight, Users, Calendar, MapPin } from "lucide-react";
+import { Trophy, Target, Award, BookOpen, Code, ExternalLink, RefreshCw, Zap, ChevronLeft, ChevronRight, Users, Calendar, MapPin, Linkedin } from "lucide-react";
 
 // Photo Carousel Component
 const PhotoCarousel = ({ photos, currentIndex, onIndexChange }: { photos: string[], currentIndex: number, onIndexChange: (index: number) => void }) => {
@@ -15,22 +15,7 @@ const PhotoCarousel = ({ photos, currentIndex, onIndexChange }: { photos: string
     onIndexChange((currentIndex - 1 + photos.length) % photos.length);
   };
 
-  // Auto-slideshow functionality with dynamic timing
-  React.useEffect(() => {
-    if (photos.length <= 1) return;
-    
-    const getPhotoDuration = (index: number) => {
-      if (index === 0) return 4000; // First photo: 4 seconds (40% of 10s cycle)
-      return 2000; // Other photos: 2 seconds each (60% of 10s cycle)
-    };
-    
-    const duration = getPhotoDuration(currentIndex);
-    const interval = setInterval(() => {
-      nextPhoto();
-    }, duration);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, photos.length]);
+  // Autoplay disabled
 
   return (
     <div className="relative">
@@ -175,7 +160,7 @@ const HackathonModal = ({ hackathon }: { hackathon: any }) => {
                 className="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200"
                 onClick={() => window.open(hackathon.linkedinPost, '_blank')}
               >
-                <ExternalLink className="h-4 w-4 mr-2" />
+                <Linkedin className="h-4 w-4 mr-2" />
                 View Detailed LinkedIn Post
               </Button>
             </div>
@@ -393,23 +378,7 @@ const Awards = () => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
 
-    // Auto-slideshow functionality - only for first card or when hovered
-    useEffect(() => {
-      if (!hackathon.photos || hackathon.photos.length <= 1) return;
-      if (!isFirstCard && !isHovered) return; // Only slide if it's the first card or being hovered
-      
-      const getPhotoDuration = (index: number) => {
-        if (index === 0) return 5000; // First photo: 5 seconds (40% of ~12s cycle)
-        return 2000; // Other photos: 2 seconds each (60% of ~12s cycle)
-      };
-      
-      const duration = getPhotoDuration(currentPhotoIndex);
-      const interval = setInterval(() => {
-        setCurrentPhotoIndex((prev) => (prev + 1) % hackathon.photos.length);
-      }, duration);
-
-      return () => clearInterval(interval);
-    }, [currentPhotoIndex, hackathon.photos, isFirstCard, isHovered]);
+    // Autoplay disabled; photos change only on user interaction
 
     return (
     <Dialog>
@@ -482,18 +451,18 @@ const Awards = () => {
             
              {/* LinkedIn Post Button */}
              {hackathon.linkedinPost && (
-               <Button 
-                 variant="outline" 
-                 size="sm" 
-                 className="w-full mt-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200 relative z-20"
-                 onClick={(e) => {
-                   e.stopPropagation();
-                   window.open(hackathon.linkedinPost, '_blank');
-                 }}
-               >
-                 <ExternalLink className="h-3 w-3 mr-2" />
-                 View LinkedIn Post
-               </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full mt-3 bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200 relative z-20"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(hackathon.linkedinPost, '_blank');
+                }}
+              >
+                <Linkedin className="h-3 w-3 mr-2" />
+                View LinkedIn Post
+              </Button>
              )}
            </CardContent>
            
