@@ -248,8 +248,8 @@ const Awards = () => {
             "/img/hackthon/dataquest/4.png"
           ],
           teamMembers: [
-            { name: "Your Name", role: "Lead Developer" },
-            { name: "Malay Sheta", role: "Co-Developer" }
+            { name: "Rishi Thakkar(Team Leader)", role: "Developer" },
+            { name: "Malay Sheta", role: "Developer" }
           ],
           technologies: ["LangChain", "FastAPI", "React", "Next.js", "React Native", "NVIDIA NIM", "Qdrant", "Python"]
         },
@@ -272,9 +272,9 @@ const Awards = () => {
              "/img/hackthon/hackwave/4.png"
            ],
           teamMembers: [
-            { name: "Rishi Thakkar", role: "Lead Developer & System Architect" },
-            { name: "Prit Patel", role: "AI Agent Specialist" },
-            { name: "Malay Sheta", role: "Backend Developer" }
+            { name: "Rishi Thakkar(Team Leader)", role: "Backend & AI Agent Developer" },
+            { name: "Prit Patel", role: "Frontend Developer" },
+            { name: "Malay Sheta", role: "Backend & AI Agent Developer" }
           ],
           technologies: ["LangGraph", "LangChain", "FastAPI", "Gemini API", "React", "Python", "AI Agents", "Multi-Agent Systems"]
         },
@@ -295,10 +295,10 @@ const Awards = () => {
             "/img/hackthon/pyquest/2.png"
           ],
           teamMembers: [
-            { name: "Your Name", role: "Lead Developer" },
-            { name: "Team Member 1", role: "Backend Developer" },
-            { name: "Team Member 2", role: "Frontend Developer" },
-            { name: "Team Member 3", role: "UI/UX Designer" }
+            { name: "Rishi", role: "Backend & AI Agent Developer" },
+            { name: "Malay Sheta", role: "Backend & AI Agent Developer" },
+            { name: "Apurv Sharma", role: "Leader" },
+            { name: "Krish vhora" ,role: "Frontend Developer"}
           ],
           technologies: ["Python", "Flask", "SQLite", "HTML/CSS", "JavaScript"]
         }
@@ -313,7 +313,7 @@ const Awards = () => {
           title: "Realy and Blind Coding",
           description: "College-level coding competition",
           badge: "Winner",
-          certificateLink: "#"
+          certificateLink: "https://www.linkedin.com/posts/rishi-thakkar-b53424276_excited-to-share-our-success-in-the-relay-activity-7154738509545717760-IhBQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAENWk28Bu2WFfA6V0jPTNg_O32SE6GIF4qI"
         },
         {
           title: "OS Arena",
